@@ -1,0 +1,87 @@
+<div class="container">
+
+  <!-- LOGIN -->
+  <div *ngIf="!auth.isAuthenticated()" class="card login-card">
+    <h2>🔐 Admin Portal</h2>
+
+    <div class="input-group">
+      <label for="username">Usuário</label>
+      <input
+        id="username"
+        type="text"
+        [(ngModel)]="username"
+        placeholder="admin"
+        (keyup.enter)="login()"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="password">Senha</label>
+      <input
+        id="password"
+        type="password"
+        [(ngModel)]="password"
+        placeholder="••••••••"
+        (keyup.enter)="login()"
+      />
+    </div>
+
+    <button (click)="login()" [disabled]="!username || !password">
+      <span *ngIf="!loading">Entrar</span>
+      <span *ngIf="loading" class="loading"></span>
+    </button>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </div>
+
+  <!-- APP PRINCIPAL -->
+  <div *ngIf="auth.isAuthenticated()" class="card app-card">
+    <div class="header">
+      <h2>🛡️ Obfuscation Service</h2>
+      <button class="logout" (click)="logout()">🚪 Sair</button>
+    </div>
+
+    <hr />
+
+    <!-- Seção de Encrypt - O RESULTADO VAI PARA O INPUT DE DECRYPT -->
+    <div class="input-group">
+      <label for="idInput">ID para Criptografar</label>
+      <input 
+        id="idInput"
+        type="number" 
+        [(ngModel)]="id" 
+        placeholder="Digite um ID numérico"
+        (keyup.enter)="encrypt()"
+      />
+      <button (click)="encrypt()" [disabled]="!id">
+        🔒 Criptografar
+      </button>
+    </div>
+
+    <hr />
+
+    <!-- Seção de Decrypt - O RESULTADO VAI PARA O INPUT DE ENCRYPT -->
+    <div class="input-group">
+      <label for="encryptedInput">Valor para Decriptografar</label>
+      <input 
+        id="encryptedInput"
+        type="text" 
+        [(ngModel)]="encrypted" 
+        placeholder="Cole o valor criptografado aqui"
+        (keyup.enter)="decrypt()"
+        [class.result]="encrypted && encrypted.startsWith('obf_')"
+      />
+      <button class="decrypt-btn" (click)="decrypt()" [disabled]="!encrypted">
+        🔓 Decriptografar
+      </button>
+      
+      <!-- Mostra o resultado no input acima, não em novo campo -->
+    </div>
+
+    <!-- Status -->
+    <div class="status" *ngIf="statusMessage">
+      <div class="status-message">{{ statusMessage }}</div>
+    </div>
+  </div>
+
+</div>
