@@ -1,0 +1,78 @@
+# =====================
+# Node / Angular
+# =====================
+node_modules/
+dist/
+out-tsc/
+.angular/cache/
+.angular/build/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.*.local
+*.local
+
+# Angular / VSCode
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# =====================
+# Build / Output
+# =====================
+build/
+tmp/
+temp/
+*.tsbuildinfo
+
+# =====================
+# OS / System
+# =====================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =====================
+# .NET / C# / Visual Studio
+# =====================
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.pdb
+*.mdb
+*.cache
+*.vs/
+*.vscode/
+
+# =====================
+# Logs / Debug
+# =====================
+*.log
+*.trace
+*.tlog
+
+# =====================
+# IDE / Editor Specific
+# =====================
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# =====================
+# Ignore build secrets
+# =====================
+*.key
+*.pem
+*.cer
+*.pfx
